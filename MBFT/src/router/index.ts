@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
-import JiHong from '../components/JiHong/JiHong.vue';
-import Detail from '../components/JiHong/Detail.vue';
 
 Vue.use(VueRouter);
 
