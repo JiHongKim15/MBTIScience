@@ -1,5 +1,9 @@
 server:
   port: 8081
+  servlet:
+    context-path: /v1
+    encoding:
+      charset: UTF-8
   error:
     whitelabel:
       enabled: false
@@ -11,6 +15,16 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mainboard?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/mainboard?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: 1111
+
+    jpa:
+      database: mysql
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+
+logging:
+  pattern:
+    console: "[ %d{ HH:mm:ss.SSS } ][ %-5level ][ %logger.%method:line%line ] - %msg%n"
