@@ -32,8 +32,8 @@ public class PostController {
 
     @GetMapping
     public ApiResult<List<Post.postForBoard>> readList(
-            @RequestParam @Min(value = 1, message = "첫 페이지보다 더 이전의 페이지를 조회했습니다.") int page,
-            @RequestParam @Min(value = 1, message = "한 페이지에 최소 한 개 이상의 정보가 표시되어야 합니다.") int limit
+            @RequestParam(defaultValue = "1") @Min(value = 1, message = "첫 페이지보다 더 이전의 페이지를 조회했습니다.") int page,
+            @RequestParam(defaultValue = "10") @Min(value = 1, message = "한 페이지에 최소 한 개 이상의 정보가 표시되어야 합니다.") int limit
     ){
         return ApiResult.success(postService.readPostList(page, limit), HttpStatus.OK);
     }
