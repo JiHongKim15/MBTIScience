@@ -38,14 +38,15 @@ public class PostService {
             List<Post> postList = postRepository.findAll(PageRequest.of(page - 1, limit, Sort.by("insDate").descending())).toList();
             return postList.stream().map(Post::of).collect(Collectors.toList());
         } catch(BusinessException e){
-            throw new BusinessException("글 저장 중 오류가 발생했습니다.", e);
+            throw new BusinessException("글 리스트 조회 중 오류가 발생했습니다.", e);
         }
     }
 
-    @Transactional(readOnly = true)
-    public Post readPostDetail(long pageNo){
-        Post post = postRepository.findById(pageNo)
+    @Transactional(rollbackFor = BusinessException.class)
+    public Post readPostDetail(long postNo){
+        Post post = postRepository.findById(postNo)
             .orElseThrow(() -> new BusinessException("글 정보가 존재하지 않습니다."));
+        postRepository.increaseViews(postNo);
         post.setComments(commentRepository.findAllByPost(post));
         return post;
     }
