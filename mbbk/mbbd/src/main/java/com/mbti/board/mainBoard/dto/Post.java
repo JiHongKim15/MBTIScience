@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-//TODO: validation 에러 메시지 문구 재설정
 
 @Getter
 @Setter
@@ -35,6 +34,9 @@ public class Post {
     @NotEmpty(message = "글 본문 내용을 입력해 주세요")
     @Column(nullable = false)
     private String mainText;
+
+    @Column(nullable = false)
+    private long views;
 
     @Column(nullable = false)
     private LocalDateTime insDate;
