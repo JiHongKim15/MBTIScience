@@ -1,11 +1,17 @@
 package com.mbti.chat.mbct.controller;
 
 import com.mbti.chat.mbct.domain.ChatMessage;
+import com.mbti.chat.mbct.domain.ChatRoom;
 import com.mbti.chat.mbct.publisher.ChatPublisher;
 import com.mbti.chat.mbct.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -18,5 +24,14 @@ public class ChatController {
         chatService.enterChatRoom(message.getChatRoomId());
         message.setMessage(message.getUserId()+"님이 입장하셨습니다.");
         chatPublisher.publish(chatService.getTopic(message.getChatRoomId()), message);
+    }
+    @ResponseBody
+    @PostMapping("/chat/chat-room")
+    public ChatRoom createChatRoom(ChatRoom chatRoom){
+        return chatService.createChatRoom(chatRoom);
+    }
+    @GetMapping("/chat/rooms")
+    public List<ChatRoom> retrieveChatRoomList(){
+        return chatService.retrieveChatRoomList();
     }
 }

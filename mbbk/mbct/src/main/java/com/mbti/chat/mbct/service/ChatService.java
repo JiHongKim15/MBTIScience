@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ChatService {
@@ -20,6 +22,9 @@ public class ChatService {
     }
     public ChannelTopic getTopic(Long chatRoomId){
         return chatRepository.getTopic(chatRoomId);
+    }
+    public List<ChatRoom> retrieveChatRoomList(){
+        return chatRepository.findAllRoom();
     }
 
 }
