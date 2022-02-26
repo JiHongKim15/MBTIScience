@@ -20,7 +20,7 @@ public class ChatController {
     private final ChatService chatService;
 
     @MessageMapping("/chat/message")    //메시지를 해당 path에 보내도록 설정하는 annotation
-    public void message(ChatMessage message){
+    public void sendMessage(ChatMessage message){
         chatService.enterChatRoom(message.getChatRoomId());
         message.setMessage(message.getUserId()+"님이 입장하셨습니다.");
         chatPublisher.publish(chatService.getTopic(message.getChatRoomId()), message);
