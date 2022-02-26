@@ -1,8 +1,11 @@
-package com.mbti.chat.mbct.dto;
+package com.mbti.chat.mbct.domain;
+
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-public class ChatRoomDTO {
+@Data
+public class ChatRoom {
     Long chatRoomId;
     Long hostId;
     String mbti;
