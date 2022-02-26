@@ -25,11 +25,11 @@ public class ChatController {
         message.setMessage(message.getUserId()+"님이 입장하셨습니다.");
         chatPublisher.publish(chatService.getTopic(message.getChatRoomId()), message);
     }
-    @ResponseBody
     @PostMapping("/chat/chat-room")
     public ChatRoom createChatRoom(ChatRoom chatRoom){
         return chatService.createChatRoom(chatRoom);
     }
+    @ResponseBody
     @GetMapping("/chat/rooms")
     public List<ChatRoom> retrieveChatRoomList(){
         return chatService.retrieveChatRoomList();
