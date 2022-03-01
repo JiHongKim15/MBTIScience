@@ -10,7 +10,9 @@ spring:
       matching-strategy: ant_path_matcher
 
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mainboard?serverTimezone=Asia/Seoul
+   # driver-class-name: com.mysql.cj.jadbc.Driver
+    url: jdbc:mysql://localhost:3306/mbur?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
     username: root
     password: 1111
+
+

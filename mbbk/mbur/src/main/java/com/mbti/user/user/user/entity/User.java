@@ -1,29 +1,25 @@
-package com.mbti.user.user.user.repository;
+package com.mbti.user.user.user.entity;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+@Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Entity
 @Table(name = "user")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String pw;
+    private String mbti;
     private String email;
     private String name;
-    private String mbti;
     private Date lastAccessDate;
-    private Date initDate;
+    private Date firstAccessDate;
 
 }
