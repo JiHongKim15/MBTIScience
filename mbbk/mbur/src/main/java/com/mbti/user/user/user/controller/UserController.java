@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user")
-public class UserController {
-
-    private final UserService userService;
+public record UserController(UserService userService) {
 
     @GetMapping
     public User retrieveUserById(@RequestParam String id){
         return userService.retrieveUserById(id);
     }
+
 
 
 }
