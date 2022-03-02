@@ -1,13 +1,11 @@
 package com.mbti.user.user.user.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
-@Data
 @NoArgsConstructor
 @Table(name = "user")
 public class User {
