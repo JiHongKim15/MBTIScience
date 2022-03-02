@@ -17,7 +17,7 @@ public class ChatSubscriber implements MessageListener {
 
     private final ObjectMapper objectMapper;
     private final RedisTemplate redisTemplate;
-    private final SimpMessageSendingOperations messagingTemplate;
+    private SimpMessageSendingOperations messagingTemplate;
 
     @Override
     public void onMessage(Message message, byte[] pattern){
