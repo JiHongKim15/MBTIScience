@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -34,4 +35,10 @@ public class ChatController {
     public List<ChatRoom> retrieveChatRoomList(){
         return chatService.retrieveChatRoomList();
     }
+    @ResponseBody
+    @GetMapping("/chat/rooms/{id}")
+    public ChatRoom findRoom(@PathVariable Long chatRoomId){
+        return chatService.findRoom(chatRoomId);
+    }
+
 }

@@ -22,7 +22,7 @@ public class ChatRepository {
     private final ChatSubscriber chatSubscriber;
     private static final String CHAT_ROOMS = "CHAT_ROOM";
     private final RedisTemplate<String, Object> redisTemplate;
-    private HashOperations<String, String, ChatRoom> opsHashChatRoom;
+    private HashOperations<String, Long, ChatRoom> opsHashChatRoom;
     private Map<Long, ChannelTopic> topicMap;
 
     @PostConstruct
@@ -34,14 +34,14 @@ public class ChatRepository {
     public List<ChatRoom> findAllRoom(){
         return opsHashChatRoom.values(CHAT_ROOMS);
     }
-    public ChatRoom findRoomById(String id){
+    public ChatRoom findRoomById(Long id){
         return opsHashChatRoom.get(CHAT_ROOMS, id);
     }
     /*
     * 채팅방 생성 할 때 redis hash에 채팅방 저장
     */
     public ChatRoom insert(ChatRoom chatRoom){
-        opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getChatRoomId().toString(), chatRoom);
+        opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getChatRoomId(), chatRoom);
         return chatRoom;
     }
     /*
