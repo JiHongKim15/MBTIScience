@@ -1,15 +1,18 @@
 package com.mbti.chat.mbct.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
-@RequiredArgsConstructor
-public class ChatRoom {
+@NoArgsConstructor
+@AllArgsConstructor
+public class ChatRoom implements Serializable {
     Long chatRoomId;
     Long hostId;
     String mbti;
