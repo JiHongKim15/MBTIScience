@@ -17,4 +17,16 @@ public class UserService{
             .orElseThrow(() -> new BusinessException("사용자 정보를 가져오는 도중 오류가 발생하였습니다."));
         return user;
     }
+
+    public void saveUser(User user) {
+        User confirmUser = userRepository.save(user);
+    }
+
+    public void updateUser(User user) {
+        User confirmUser = userRepository.save(user);
+    }
+
+    public void deleteUser(String id){
+        userRepository.deleteById(id);
+    }
 }
