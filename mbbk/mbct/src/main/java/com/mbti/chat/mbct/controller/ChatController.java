@@ -40,5 +40,8 @@ public class ChatController {
     public ChatRoom findRoom(@PathVariable Long chatRoomId){
         return chatService.findRoom(chatRoomId);
     }
-
+    @GetMapping("/chat/enter/{id}")
+    public void enterChatRoom(@PathVariable Long id){
+        chatService.enterChatRoom(id);
+    }
 }
