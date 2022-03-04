@@ -1,5 +1,6 @@
 package com.mbti.chat.mbct.service;
 
+import com.mbti.chat.mbct.domain.ChatMessage;
 import com.mbti.chat.mbct.domain.ChatRoom;
 import com.mbti.chat.mbct.repository.ChatRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ public class ChatService {
     private final ChatRepository chatRepository;
 
     public ChatRoom createChatRoom(ChatRoom chatRoom){
-        return chatRepository.insert(chatRoom);
+        return chatRepository.insertChatRoom(chatRoom);
     }
     public void enterChatRoom(Long chatRoomId){
         chatRepository.enter(chatRoomId);
@@ -28,6 +29,12 @@ public class ChatService {
     }
     public ChatRoom findRoom(long chatRoomId){
         return chatRepository.findRoomById(chatRoomId);
+    }
+    public ChatMessage saveChatMessage(ChatMessage chatMessage){
+        return chatRepository.insertChatMessage(chatMessage);
+    }
+    public ChatMessage getChatMessage(Long chatMessageId){
+        return chatRepository.getChatMessage(chatMessageId);
     }
 
 }

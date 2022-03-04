@@ -1,5 +1,6 @@
 package com.mbti.chat.mbct.repository;
 
+import com.mbti.chat.mbct.domain.ChatMessage;
 import com.mbti.chat.mbct.domain.ChatRoom;
 import com.mbti.chat.mbct.subscriber.ChatSubscriber;
 import jakarta.annotation.PostConstruct;
@@ -21,8 +22,10 @@ public class ChatRepository {
     private final RedisMessageListenerContainer redisMessageListenerContainer;
     private final ChatSubscriber chatSubscriber;
     private static final String CHAT_ROOMS = "CHAT_ROOM";
+    private static final String CHAT_MESSAGE = "CHAT_MESSAGE";
     private final RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, Long, ChatRoom> opsHashChatRoom;
+    private HashOperations<String, Long, ChatMessage> opsHashChatMessage;
     private Map<Long, ChannelTopic> topicMap;
 
     @PostConstruct
@@ -40,9 +43,22 @@ public class ChatRepository {
     /*
     * 채팅방 생성 할 때 redis hash에 채팅방 저장
     */
-    public ChatRoom insert(ChatRoom chatRoom){
+    public ChatRoom insertChatRoom(ChatRoom chatRoom){
         opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getChatRoomId(), chatRoom);
         return chatRoom;
+    }
+    /*
+     * 발행 후 정상 sub 된 메시지 저장
+     */
+    public ChatMessage insertChatMessage(ChatMessage chatMessage){
+        opsHashChatMessage.put(CHAT_MESSAGE, chatMessage.getMessageId(), chatMessage);
+        return chatMessage;
+    }
+    /*
+     * 저장된 메시지 중 특정 메시지 get
+     */
+    public ChatMessage getChatMessage(Long chatMessageId){
+        return opsHashChatMessage.get(CHAT_MESSAGE, chatMessageId);
     }
     /*
      * 채팅방에 입장할 때 pub/sub을 위해 listener 설정
