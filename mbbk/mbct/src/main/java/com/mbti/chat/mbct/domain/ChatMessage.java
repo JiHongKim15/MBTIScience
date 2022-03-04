@@ -1,14 +1,18 @@
 package com.mbti.chat.mbct.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
-import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
 
 @Data
-public class ChatMessage {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ChatMessage{
     Long messageId;
     Long chatRoomId;
     String message;
-    LocalDateTime messageTime;
+    String messageTime;
     Long userId;
 }
