@@ -1,5 +1,6 @@
 package com.mbti.user.user.user.entity;
 
+import com.mbti.user.user.user.dto.Role;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +45,16 @@ public class User {
 
     @Builder
     public User(String name, String email, String picture, Role role) {
+        this.name = name;
+        this.email = email;
+        this.picture = picture;
+        this.role = role;
+    }
+
+    @Builder
+    public User(String id, String pw, String name, String email, String picture, Role role) {
+        this.id = id;
+        this.pw = pw;
         this.name = name;
         this.email = email;
         this.picture = picture;

@@ -1,4 +1,4 @@
-package com.mbti.user.user.user.entity;
+package com.mbti.user.user.user.dto;
 
 
 import lombok.Getter;

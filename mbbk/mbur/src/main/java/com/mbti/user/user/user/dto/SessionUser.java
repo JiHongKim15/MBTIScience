@@ -1,5 +1,6 @@
-package com.mbti.user.user.user.entity;
+package com.mbti.user.user.user.dto;
 
+import com.mbti.user.user.user.entity.User;
 import lombok.Getter;
 
 import java.io.Serializable;

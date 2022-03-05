@@ -1,6 +1,6 @@
 package com.mbti.user.config.security;
 
-import com.mbti.user.user.user.entity.Role;
+import com.mbti.user.user.user.dto.Role;
 import com.mbti.user.user.user.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
