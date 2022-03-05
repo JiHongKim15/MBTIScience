@@ -1,7 +1,7 @@
 package com.mbti.user.user.user.service;
 
 import com.mbti.user.user.user.dto.OAuthAttributes;
-import com.mbti.user.user.user.entity.SessionUser;
+import com.mbti.user.user.user.dto.SessionUser;
 import com.mbti.user.user.user.entity.User;
 import com.mbti.user.user.user.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;

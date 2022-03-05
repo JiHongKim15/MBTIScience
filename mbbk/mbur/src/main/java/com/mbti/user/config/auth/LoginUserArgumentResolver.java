@@ -1,6 +1,6 @@
 package com.mbti.user.config.auth;
 
-import com.mbti.user.user.user.entity.SessionUser;
+import com.mbti.user.user.user.dto.SessionUser;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
