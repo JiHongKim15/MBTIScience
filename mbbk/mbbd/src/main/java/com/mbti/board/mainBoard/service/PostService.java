@@ -3,6 +3,7 @@ package com.mbti.board.mainBoard.service;
 import com.mbti.board.mainBoard.exception.BusinessException;
 import com.mbti.board.mainBoard.dto.Post;
 import com.mbti.board.mainBoard.repository.CommentRepository;
+import com.mbti.board.mainBoard.repository.PostFileRepository;
 import com.mbti.board.mainBoard.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +22,7 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private final PostFileRepository postFileRepository;
 
     @Transactional(rollbackFor = BusinessException.class)
     public void createPost(Post post){
@@ -47,6 +49,7 @@ public class PostService {
         Post post = postRepository.findById(pageNo)
             .orElseThrow(() -> new BusinessException("글 정보가 존재하지 않습니다."));
         post.setComments(commentRepository.findAllByPost(post));
+        post.setPostFiles(postFileRepository.findAllByPost(post));
         return post;
     }
 
