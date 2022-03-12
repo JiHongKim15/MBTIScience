@@ -42,9 +42,14 @@ public class Post {
     @Column(nullable = false)
     private LocalDateTime updDate;
 
+    //@Transient
+   //private Long fileAIdxs;
+
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     List<Comment> comments;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    List<PostFile> postFiles;
 
 
     @Getter
