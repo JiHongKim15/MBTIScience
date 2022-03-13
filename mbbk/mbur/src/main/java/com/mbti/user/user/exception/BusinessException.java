@@ -1,4 +1,4 @@
-package com.mbti.user.exception;
+package com.mbti.user.user.exception;
 
 public class BusinessException extends RuntimeException {
     public BusinessException(String message) {

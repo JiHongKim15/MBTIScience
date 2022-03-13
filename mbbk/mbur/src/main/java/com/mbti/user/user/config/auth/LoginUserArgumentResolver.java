@@ -1,5 +1,6 @@
-package com.mbti.user.config.auth;
+package com.mbti.user.user.config.auth;
 
+import com.mbti.user.user.config.auth.LoginUser;
 import com.mbti.user.user.user.dto.SessionUser;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

@@ -1,5 +1,6 @@
-package com.mbti.user.config.auth;
+package com.mbti.user.user.config.auth;
 
+import com.mbti.user.user.config.auth.LoginUserArgumentResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
