@@ -1,5 +1,38 @@
 package com.mbti.user.user.user.controller;
 
-public class UserController {
-    //UserController는 다른 프로젝트를 생성하여 진행(MSA)
+
+import com.mbti.user.user.user.entity.User;
+import com.mbti.user.user.user.service.UserService;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+@Valid
+@RestController
+@RequestMapping("/user")
+public record UserController(UserService userService) {
+
+    @GetMapping
+    public User retrieveUserById(@RequestParam String id){
+        return userService.retrieveUserById(id);
+    }
+
+    @PostMapping
+    public void saveUser(@RequestBody User user){
+        userService.saveUser(user);
+    }
+
+    @PatchMapping
+    public void updateUser(@RequestBody User user){
+        userService.updateUser(user);
+    }
+
+    @DeleteMapping
+    public void deleteUser(@RequestBody String id){
+        userService.deleteUser(id);
+    }
+
+
+
+
+
 }

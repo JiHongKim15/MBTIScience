@@ -2,10 +2,12 @@ package com.mbti.board.mainBoard.controller;
 
 import com.mbti.board.mainBoard.controller.bind.ApiResult;
 import com.mbti.board.mainBoard.dto.Post;
+import com.mbti.board.mainBoard.service.PostFileService;
 import com.mbti.board.mainBoard.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -21,12 +23,15 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final PostFileService postFileService;
 
     @PostMapping
     public ApiResult<String> create(
-            @RequestBody @Valid Post post
+            @RequestPart(value="image", required=false) List<MultipartFile> files,
+            @RequestPart @Valid Post post
     ){
         postService.createPost(post);
+        postFileService.insertBoardFile(post);
         return ApiResult.success(null, HttpStatus.OK);
     }
 
