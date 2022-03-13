@@ -2,9 +2,12 @@ package com.mbti.chat.mbct.service;
 
 import com.mbti.chat.mbct.domain.ChatMessage;
 import com.mbti.chat.mbct.domain.ChatRoom;
+import com.mbti.chat.mbct.publisher.ChatPublisher;
 import com.mbti.chat.mbct.repository.ChatRepository;
+import com.mbti.chat.mbct.subscriber.ChatSubscriber;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,15 +17,23 @@ import java.util.List;
 public class ChatService {
 
     private final ChatRepository chatRepository;
+    private final ChatPublisher chatPublisher;
+    private final ChatSubscriber chatSubscriber;
+    private final RedisMessageListenerContainer redisMessageListenerContainer;
 
     public ChatRoom createChatRoom(ChatRoom chatRoom){
         return chatRepository.insertChatRoom(chatRoom);
     }
     public void enterChatRoom(Long chatRoomId){
-        chatRepository.enter(chatRoomId);
+        ChannelTopic topic = chatRepository.getTopic(chatRoomId);
+        if(topic == null){
+            topic = new ChannelTopic(chatRoomId.toString());
+            redisMessageListenerContainer.addMessageListener(chatSubscriber, topic);
+            chatRepository.insertTopic(chatRoomId, topic);
+        }
     }
-    public ChannelTopic getTopic(Long chatRoomId){
-        return chatRepository.getTopic(chatRoomId);
+    public void sendMessage(ChatMessage message){
+        chatPublisher.publish(chatRepository.getTopic(message.getChatRoomId()), message);
     }
     public List<ChatRoom> retrieveChatRoomList(){
         return chatRepository.findAllRoom();

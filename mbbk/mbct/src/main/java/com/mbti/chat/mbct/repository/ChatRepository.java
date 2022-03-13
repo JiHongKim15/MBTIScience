@@ -2,13 +2,11 @@ package com.mbti.chat.mbct.repository;
 
 import com.mbti.chat.mbct.domain.ChatMessage;
 import com.mbti.chat.mbct.domain.ChatRoom;
-import com.mbti.chat.mbct.subscriber.ChatSubscriber;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -19,8 +17,6 @@ import java.util.Map;
 @Repository
 public class ChatRepository {
 
-    private final RedisMessageListenerContainer redisMessageListenerContainer;
-    private final ChatSubscriber chatSubscriber;
     private static final String CHAT_ROOMS = "CHAT_ROOM";
     private static final String CHAT_MESSAGE = "CHAT_MESSAGE";
     private final RedisTemplate<String, Object> redisTemplate;
@@ -31,6 +27,7 @@ public class ChatRepository {
     @PostConstruct
     private void initialize(){
         opsHashChatRoom = redisTemplate.opsForHash();
+        opsHashChatMessage = redisTemplate.opsForHash();
         topicMap = new HashMap<>();
     }
 
@@ -60,19 +57,11 @@ public class ChatRepository {
     public ChatMessage getChatMessage(Long chatMessageId){
         return opsHashChatMessage.get(CHAT_MESSAGE, chatMessageId);
     }
-    /*
-     * 채팅방에 입장할 때 pub/sub을 위해 listener 설정
-     */
-    public void enter(Long chatRoomId){
-        ChannelTopic topic = topicMap.get(chatRoomId);
-        if(topic == null){
-            topic = new ChannelTopic(chatRoomId.toString());
-            redisMessageListenerContainer.addMessageListener(chatSubscriber, topic);
-            topicMap.put(chatRoomId, topic);
-        }
-    }
     public ChannelTopic getTopic(Long chatRoomId){
         return topicMap.get(chatRoomId);
+    }
+    public void insertTopic(Long chatRoomId, ChannelTopic topic){
+        topicMap.put(chatRoomId, topic);
     }
 
 
