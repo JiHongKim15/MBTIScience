@@ -2,6 +2,7 @@ package com.mbti.chat.mbct.service;
 
 import com.mbti.chat.mbct.domain.ChatMessage;
 import com.mbti.chat.mbct.domain.ChatRoom;
+import com.mbti.chat.mbct.exception.ChatException;
 import com.mbti.chat.mbct.publisher.ChatPublisher;
 import com.mbti.chat.mbct.repository.ChatRepository;
 import com.mbti.chat.mbct.subscriber.ChatSubscriber;
@@ -27,10 +28,10 @@ public class ChatService {
     public void enterChatRoom(Long chatRoomId){
         ChannelTopic topic = chatRepository.getTopic(chatRoomId);
         if(topic == null){
-            topic = new ChannelTopic(chatRoomId.toString());
-            redisMessageListenerContainer.addMessageListener(chatSubscriber, topic);
-            chatRepository.insertTopic(chatRoomId, topic);
+            throw new ChatException("해당 roomId에 대한 방이 존재하지 않습니다.");
         }
+        redisMessageListenerContainer.addMessageListener(chatSubscriber, topic);
+        chatRepository.insertTopic(chatRoomId, topic);
     }
     public void sendMessage(ChatMessage message){
         chatPublisher.publish(chatRepository.getTopic(message.getChatRoomId()), message);
