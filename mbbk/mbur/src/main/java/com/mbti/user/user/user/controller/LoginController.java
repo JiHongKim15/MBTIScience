@@ -1,6 +1,6 @@
 package com.mbti.user.user.user.controller;
 
-import com.mbti.user.config.auth.LoginUser;
+import com.mbti.user.user.config.auth.LoginUser;
 import com.mbti.user.user.user.dto.SessionUser;
 import com.mbti.user.user.user.service.LoginService;
 import jakarta.validation.Valid;
@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/login")
 public record LoginController(LoginService loginService) {
+
+    @GetMapping
+    public void login(){
+        System.out.println("TEST!!!!!!!!!");
+    }
 
     @GetMapping("/google")
     public void loginGoogle(@LoginUser SessionUser user) {
