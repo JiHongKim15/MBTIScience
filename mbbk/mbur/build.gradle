@@ -28,8 +28,8 @@ dependencies {
 	implementation 'mysql:mysql-connector-java:8.0.18'
 
 	//swagger
-	//implementation "io.springfox:springfox-boot-starter:3.0.0"
-	//implementation "io.springfox:springfox-swagger-ui:3.0.0"
+	//implementation "io.springfox:springfox-boot-starter:2.9.2"
+	//implementation "io.springfox:springfox-swagger-ui:2.9.2"
 
 	//lombok
 	compileOnly 'org.projectlombok:lombok:1.18.22'

@@ -4,6 +4,10 @@ server:
     whitelabel:
       enabled: false
 
+logging:
+  level:
+    root: info
+
 spring:
   mvc:
     pathmatch:
