@@ -34,7 +34,7 @@ public record LoginController(LoginService loginService) {
         loginService.loginKakao(user);
     }
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public void logout(@LoginUser SessionUser user){
         loginService.logout(user);
     }
