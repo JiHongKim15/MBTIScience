@@ -5,23 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894b7838-79ae-41e2-b524-986943f71cc5" name="Default Changelist" comment="Default Changelist">
-      <change afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/swagger/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/config/auth/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/LoginUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/config/auth/LoginUserArgumentResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/LoginUserArgumentResolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/config/auth/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/config/swagger/SwaggerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/exception/BusinessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/exception/BusinessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/MburApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/MburApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/user/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/user/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/resources/application-oauth.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/resources/application-oauth.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbur/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/mbur">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="user" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -47,7 +58,7 @@
       <recent name="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle./Users/jihongkim/Library/CloudStorage/OneDrive-개인/Project/MBTIScience/mbbk/mbur">
+  <component name="RunManager" selected="애플리케이션.MburApplication">
     <configuration name="MburApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mbti.user.user.MburApplication" />
       <module name="user.main" />
