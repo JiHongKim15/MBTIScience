@@ -1,4 +1,5 @@
-//package com.mbti.user.config.swagger;
+
+//package com.mbti.user.user.config.swagger;
 //
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
@@ -12,7 +13,7 @@
 //
 //    @Bean
 //    public Docket api() {
-//        return new Docket(DocumentationType.OAS_30)
+//        return new Docket(DocumentationType.SWAGGER_2)
 //                .select()
 //                .apis(RequestHandlerSelectors.any())
 //                .paths(PathSelectors.any())
