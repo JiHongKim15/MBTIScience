@@ -1,7 +1,7 @@
 package com.mbti.user.user.user.service;
 
 import com.mbti.user.user.user.entity.User;
-import com.mbti.user.exception.BusinessException;
+import com.mbti.user.user.exception.BusinessException;
 import com.mbti.user.user.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
