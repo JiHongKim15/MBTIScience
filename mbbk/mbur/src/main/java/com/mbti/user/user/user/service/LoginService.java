@@ -3,8 +3,10 @@ package com.mbti.user.user.user.service;
 import com.mbti.user.user.user.dto.SessionUser;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class LoginService {
@@ -23,6 +25,7 @@ public class LoginService {
     }
 
     public void logout(SessionUser sessionUser) {
-
+        log.info("logout 테스트");
+        log.info(sessionUser.getEmail());
     }
 }

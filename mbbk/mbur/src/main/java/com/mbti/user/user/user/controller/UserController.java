@@ -16,6 +16,11 @@ public record UserController(UserService userService) {
         return userService.retrieveUserById(id);
     }
 
+    /**
+     * Method: saveUser
+     * Description: 회원가입
+     * @param user
+     */
     @PostMapping
     public void saveUser(@RequestBody User user){
         userService.saveUser(user);
