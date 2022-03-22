@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894b7838-79ae-41e2-b524-986943f71cc5" name="Default Changelist" comment="Default Changelist">
+      <change beforePath="$PROJECT_DIR$/../MBFT/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MBFT/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MBFT/src/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/src/Router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MBFT/src/components/ChatHeader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MBFT/src/pages/ChatMainPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MBFT/src/pages/Home.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
