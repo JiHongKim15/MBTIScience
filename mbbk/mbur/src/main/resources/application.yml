@@ -10,7 +10,7 @@ logging:
 
 spring:
   profiles:
-    include: oauth
+    include: application-oauth.yml
 
   mvc:
     pathmatch:

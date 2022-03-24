@@ -3,6 +3,8 @@ import LoginButtonGoogle from "../components/NaverLoginButton";
 import axios from "axios";
 import {GoogleLoginButton} from 'react-social-login-buttons';
 import NaverLoginButton from "../components/NaverLoginButton";
+import KakaoLoginButton from "../components/KakaoLoginButton";
+import kakaoLoginIcon from "../../assests/icon/kakao_login_icon.png";
 
 function LoginPage() {
     const socialLogin = () => {
@@ -21,9 +23,9 @@ function LoginPage() {
         <div className="LoginPage">
             Login
             < GoogleLoginButton onClick = { ( ) =>  
-            axios.get('/oauth2/authorization/naver')
+            axios.get('http://localhost:8082/login/oauth2/code/naver')
                 .then( () => {
-                    console.log("로그인 성공");
+                    console.log("성공");
                 })
                 .catch( (error) => {
                     console.log(error.response);
@@ -31,8 +33,10 @@ function LoginPage() {
                 .finally( () => {
                     console.log("로그인 됐나?");
                 })
-         } />
+            } />
             < NaverLoginButton onClick = { ( ) =>  alert( ' naver Button' ) } />
+            < KakaoLoginButton onClick = { ( ) =>  alert( ' kakao Button' ) } />
+            
         </div>
     );
 }
