@@ -21,7 +21,7 @@ function LoginPage() {
         <div className="LoginPage">
             Login
             < GoogleLoginButton onClick = { ( ) =>  
-            axios.get('http://localhost:8082/oauth2/authorization/google')
+            axios.get('/oauth2/authorization/naver')
                 .then( () => {
                     console.log("로그인 성공");
                 })
