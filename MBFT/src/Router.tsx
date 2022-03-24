@@ -2,15 +2,17 @@ import React from 'react';
 import { Route, Switch, Redirect } from "react-router";
 import { BrowserRouter } from 'react-router-dom';
 
-import ChatMainPage from './pages/ChatMainPage';
-import Home from './pages/Home';
+import ChatMainPage from './chat/pages/ChatMainPage';
+import LoginPage from './user/pages/LoginPage';
+import Home from './common/Home';
 
 const Router = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" component={Home} exact />
+                <Route path="/" component={Home} exact /> 
                 <Route path="/chat" component={ChatMainPage} />
+                <Route path="/login" component={LoginPage} />
                 <Route component={() => <Redirect to="/" />} />
             </Switch>
         </BrowserRouter>
