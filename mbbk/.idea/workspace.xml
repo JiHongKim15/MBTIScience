@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894b7838-79ae-41e2-b524-986943f71cc5" name="Default Changelist" comment="Default Changelist">
+      <change afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/ResourceServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MBFT/src/user/components/KakaoLoginButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/src/user/components/KakaoLoginButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MBFT/src/user/components/NaverLoginButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/src/user/components/NaverLoginButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MBFT/src/user/pages/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/src/user/pages/LoginPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbur/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbur/src/main/resources/application-oauth.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/resources/application-oauth.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +38,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -89,6 +102,19 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="user" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="user" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
