@@ -19,11 +19,11 @@ spring:
     username: ssafy
     password: ssafy
 
-    jpa:
-      database: mysql
-      show-sql: true
-      hibernate:
-        ddl-auto: update
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
 
 logging:
   pattern:
