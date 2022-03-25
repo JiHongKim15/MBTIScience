@@ -27,8 +27,8 @@ public class PostController {
 
     @PostMapping
     public ApiResult<String> create(
-            @RequestPart(value="image", required=false) List<MultipartFile> files,
-            @RequestPart @Valid Post post
+            @RequestPart @Valid Post post,
+            @RequestPart(value="image", required=false) List<MultipartFile> files
     ){
         postService.createPost(post);
         postFileService.insertBoardFile(post);
