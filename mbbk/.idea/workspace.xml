@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894b7838-79ae-41e2-b524-986943f71cc5" name="Default Changelist" comment="Default Changelist">
-      <change afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/ResourceServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MBFT/src/user/components/KakaoLoginButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/src/user/components/KakaoLoginButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MBFT/src/user/components/NaverLoginButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/src/user/components/NaverLoginButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MBFT/src/user/pages/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../MBFT/src/user/pages/LoginPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/config/auth/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mbur/src/main/resources/application-oauth.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/resources/application-oauth.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mbur" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -70,10 +63,9 @@
       <recent name="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.MburApplication">
+  <component name="RunManager" selected="Application.MburApplication">
     <configuration name="MburApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mbti.user.user.MburApplication" />
-      <module name="user.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.mbti.user.user.*" />
@@ -116,9 +108,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.MburApplication" />
+      <item itemvalue="Gradle./Users/jihongkim/Library/CloudStorage/OneDrive-개인/Project/MBTIScience/mbbk/mbur" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.MburApplication" />
         <item itemvalue="Gradle./Users/jihongkim/Library/CloudStorage/OneDrive-개인/Project/MBTIScience/mbbk/mbur" />
       </list>
     </recent_temporary>
