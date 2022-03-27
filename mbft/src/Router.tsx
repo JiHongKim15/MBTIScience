@@ -13,8 +13,8 @@ const Router = () => {
             <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/chat" component={ChatMainPage} exact />
-                <Route path="/chat/rooms" component={ChatRoomListPage} />
-                <Route path="/login" component={LoginPage} />
+                <Route path="/chat/rooms" component={ChatRoomListPage} exact />
+                <Route path="/login" component={LoginPage} exact />
                 <Route component={() => <Redirect to="/" />} />
             </Switch>
         </BrowserRouter>
