@@ -5,6 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894b7838-79ae-41e2-b524-986943f71cc5" name="Default Changelist" comment="Default Changelist">
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/auth/LoginUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/auth/LoginUserArgumentResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/auth/ResourceServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/auth/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/swagger/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/exception/BusinessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/dto/OAuthAttributes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/dto/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/dto/SessionUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/service/CustomOAuth2UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/service/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user 2/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +62,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="25C1GYBoXgNcd5IxuNFjQDq5kMZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -55,15 +78,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mbur" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/user 2/src/main/resources" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/user 2/src/main/resources" />
+      <recent name="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MburApplication">
+  <component name="RunManager" selected="Gradle./Users/jihongkim/Library/CloudStorage/OneDrive-개인/Project/MBTIScience/mbbk/mbur">
     <configuration name="MburApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mbti.user.user.MburApplication" />
       <extension name="coverage">
@@ -109,8 +136,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.MburApplication" />
       <item itemvalue="Gradle./Users/jihongkim/Library/CloudStorage/OneDrive-개인/Project/MBTIScience/mbbk/mbur" />
+      <item itemvalue="애플리케이션.MburApplication" />
     </list>
     <recent_temporary>
       <list>
