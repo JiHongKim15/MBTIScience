@@ -7,7 +7,6 @@ const config = {
   style: { background: "#03C75A" },
   activeStyle: { background: "#293e69" }
 };
-/** My Facebook login button. */
 const NaverLoginButton = createButton(config);
 
 export default NaverLoginButton;
