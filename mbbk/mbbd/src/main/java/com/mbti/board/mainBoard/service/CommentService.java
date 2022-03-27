@@ -17,7 +17,6 @@ public class CommentService {
     @Transactional(rollbackFor = BusinessException.class)
     public void createComment(Comment comment){
         try {
-            comment.setTimeBeforeInsert();
             commentRepository.save(comment);
         } catch(BusinessException e){
             throw new BusinessException("댓글 저장 중 오류가 발생했습니다.", e);
@@ -29,7 +28,7 @@ public class CommentService {
         Comment comment = commentRepository.findById(commentForUpdate.getCommentNo())
                 .orElseThrow(() -> new BusinessException("기존 댓글 정보가 존재하지 않습니다."));
 
-        if(comment.updateCommentInfo(commentForUpdate)){
+        if(comment.getCommentNo() == commentForUpdate.getCommentNo()){
             try {
                 commentRepository.save(comment);
             } catch(BusinessException e){

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -29,25 +31,12 @@ public class Comment {
     private String text;
 
     @Column(nullable = false)
+    @CreationTimestamp
     private LocalDateTime insDate;
 
     @Column(nullable = false)
+    @UpdateTimestamp
     private LocalDateTime updDate;
-
-    public void setTimeBeforeInsert(){
-        this.insDate = LocalDateTime.now();
-        this.updDate = LocalDateTime.now();
-    }
-
-    public boolean updateCommentInfo(CommentForUpdate comment) {
-        if (comment.getCommentNo() == this.getCommentNo()) {
-            this.text = comment.text;
-            this.updDate = LocalDateTime.now();
-            return true;
-        }
-        return false;
-
-    }
 
 
     @Getter
