@@ -1,7 +1,6 @@
 package com.mbti.user.config.auth;
 
-import com.mbti.user.user.user.dto.SessionUser;
-import jakarta.servlet.http.HttpSession;
+import com.mbti.user.user.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Component

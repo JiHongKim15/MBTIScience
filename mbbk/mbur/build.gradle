@@ -1,10 +1,10 @@
 plugins {
-	id 'org.springframework.boot' version '3.0.0-M1'
+	id 'org.springframework.boot' version '2.7.0-M3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
 
-group = 'com.mbti.user'
+group = 'com.mbti'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.3'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	//database 등록
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -28,13 +28,11 @@ dependencies {
 	implementation 'mysql:mysql-connector-java:8.0.18'
 
 	//swagger
-//	implementation "io.springfox:springfox-boot-starter:3.0.0"
-//	implementation "io.springfox:springfox-swagger-ui:3.0.0"
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 
 	//lombok
-	compileOnly 'org.projectlombok:lombok:1.18.22'
-	annotationProcessor 'org.projectlombok:lombok:1.18.22'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.3'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 
 	//검증
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -43,9 +41,16 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.4.1.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
 
+	//spring security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.6.3'
+
 	//oauth2
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {

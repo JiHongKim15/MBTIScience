@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -13,7 +15,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-//TODO: validation 에러 메시지 문구 재설정
 
 @Getter
 @Setter
@@ -37,14 +38,24 @@ public class Post {
     private String mainText;
 
     @Column(nullable = false)
+    private long views;
+
+    @Column(nullable = false)
+    @CreationTimestamp
     private LocalDateTime insDate;
 
     @Column(nullable = false)
+    @UpdateTimestamp
     private LocalDateTime updDate;
+
+    //@Transient
+   //private Long fileAIdxs;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     List<Comment> comments;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    List<PostFile> postFiles;
 
 
     @Getter
@@ -73,11 +84,6 @@ public class Post {
         private final LocalDateTime insDate;
     }
 
-    public void setTimeBeforeInsert(){
-        this.insDate = LocalDateTime.now();
-        this.updDate = LocalDateTime.now();
-    }
-
     // 함수명 이게 맞나..?
     public postForBoard of(){
         return postForBoard.builder().
@@ -86,15 +92,5 @@ public class Post {
             title(this.title).
             insDate(this.insDate).
             build();
-    }
-
-    public boolean updatePostInfo(PostForUpdate post){
-        if(this.author.equals(post.getAuthor()) && this.postNo == post.getPostNo()){
-            this.title = post.getTitle();
-            this.mainText = post.getMainText();
-            this.updDate = LocalDateTime.now();
-            return true;
-        }
-        return false;
     }
 }

@@ -2,10 +2,12 @@ package com.mbti.board.mainBoard.controller;
 
 import com.mbti.board.mainBoard.controller.bind.ApiResult;
 import com.mbti.board.mainBoard.dto.Post;
+import com.mbti.board.mainBoard.service.PostFileService;
 import com.mbti.board.mainBoard.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -21,19 +23,22 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final PostFileService postFileService;
 
     @PostMapping
     public ApiResult<String> create(
-            @RequestBody @Valid Post post
+            @RequestPart @Valid Post post,
+            @RequestPart(value="image", required=false) List<MultipartFile> files
     ){
         postService.createPost(post);
+        postFileService.insertBoardFile(post);
         return ApiResult.success(null, HttpStatus.OK);
     }
 
     @GetMapping
     public ApiResult<List<Post.postForBoard>> readList(
-            @RequestParam @Min(value = 1, message = "첫 페이지보다 더 이전의 페이지를 조회했습니다.") int page,
-            @RequestParam @Min(value = 1, message = "한 페이지에 최소 한 개 이상의 정보가 표시되어야 합니다.") int limit
+            @RequestParam(defaultValue = "1") @Min(value = 1, message = "첫 페이지보다 더 이전의 페이지를 조회했습니다.") int page,
+            @RequestParam(defaultValue = "10") @Min(value = 1, message = "한 페이지에 최소 한 개 이상의 정보가 표시되어야 합니다.") int limit
     ){
         return ApiResult.success(postService.readPostList(page, limit), HttpStatus.OK);
     }
