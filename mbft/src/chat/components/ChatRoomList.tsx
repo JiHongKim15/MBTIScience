@@ -33,7 +33,7 @@ function ChatRoomList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {rooms.map(room => (
+                        {rooms?.map(room => (
                             <tr key={room.chatRoomId}>
                                 <td>{room.chatRoomId}</td>
                                 <td>{room.chatSubject}</td>
