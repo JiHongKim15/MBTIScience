@@ -15,6 +15,7 @@ const Router = () => {
                 <Route path="/chat" component={ChatMainPage} exact />
                 <Route path="/chat/rooms" component={ChatRoomListPage} exact />
                 <Route path="/login" component={LoginPage} exact />
+                <Route path="/chat/room/:id" component={ChatMainPage} exact />
                 <Route component={() => <Redirect to="/" />} />
             </Switch>
         </BrowserRouter>
