@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Table, Container } from "react-bootstrap";
+import { useHistory } from 'react-router';
 
 function ChatRoomList() {
 
@@ -17,6 +18,7 @@ function ChatRoomList() {
         searchRooms();
     }, []);
 
+    const history = useHistory();
     return (
         <div className="ChatRoomList">
             <Container>
@@ -33,8 +35,15 @@ function ChatRoomList() {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* optional chaining */}
                         {rooms?.map(room => (
-                            <tr key={room.chatRoomId}>
+                            <tr key={room.chatRoomId}
+                                onClick={() => {
+                                    history.push({
+                                        pathname: `/chat/room/${room.chatRoomId}`,
+                                        state: { room: room }
+                                    })
+                                }}>
                                 <td>{room.chatRoomId}</td>
                                 <td>{room.chatSubject}</td>
                                 <td>{room.mbti}</td>
