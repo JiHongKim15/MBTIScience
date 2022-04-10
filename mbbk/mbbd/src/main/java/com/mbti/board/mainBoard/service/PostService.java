@@ -1,5 +1,8 @@
 package com.mbti.board.mainBoard.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mbti.board.mainBoard.exception.BusinessException;
 import com.mbti.board.mainBoard.dto.Post;
 import com.mbti.board.mainBoard.repository.CommentRepository;
@@ -23,6 +26,21 @@ public class PostService {
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
     private final PostFileRepository postFileRepository;
+
+    public Post makeObject(String str) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Post post = new Post();
+        // JSON -> Java Object
+        try {
+            System.out.println("####");
+            System.out.println(str);
+            post = objectMapper.readValue(str, Post.class);
+            return post;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return post;
+    }
 
     @Transactional(rollbackFor = BusinessException.class)
     public void createPost(Post post){

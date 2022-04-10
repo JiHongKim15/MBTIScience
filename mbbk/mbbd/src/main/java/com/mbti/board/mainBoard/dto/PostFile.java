@@ -1,13 +1,16 @@
 package com.mbti.board.mainBoard.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import javax.persistence.*;
+import lombok.*;
 
+import javax.persistence.*; 
+
+@Builder
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 public class PostFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -27,18 +27,18 @@ public class PostController {
 
     @PostMapping
     public ApiResult<String> create(
-            @RequestPart @Valid Post post,
-            @RequestPart(value="image", required=false) List<MultipartFile> files
+            @RequestPart(value="files", required=false) List<MultipartFile> files,
+            @Valid @RequestPart(value = "post") Post post
     ){
         postService.createPost(post);
-        postFileService.insertBoardFile(post);
+        postFileService.insertBoardFile(files, post);
         return ApiResult.success(null, HttpStatus.OK);
     }
 
     @GetMapping
     public ApiResult<List<Post.postForBoard>> readList(
-            @RequestParam(defaultValue = "1") @Min(value = 1, message = "첫 페이지보다 더 이전의 페이지를 조회했습니다.") int page,
-            @RequestParam(defaultValue = "10") @Min(value = 1, message = "한 페이지에 최소 한 개 이상의 정보가 표시되어야 합니다.") int limit
+            @RequestParam @Min(value = 1, message = "첫 페이지보다 더 이전의 페이지를 조회했습니다.") int page,
+            @RequestParam @Min(value = 1, message = "한 페이지에 최소 한 개 이상의 정보가 표시되어야 합니다.") int limit
     ){
         return ApiResult.success(postService.readPostList(page, limit), HttpStatus.OK);
     }
@@ -56,9 +56,11 @@ public class PostController {
 
     @PatchMapping
     public ApiResult<String> update(
-            @RequestBody @Valid Post.PostForUpdate postForUpdate
+            @RequestPart(value="files", required=false) List<MultipartFile> files,
+            @RequestPart @Valid Post.PostForUpdate postForUpdate
     ){
         postService.updatePost(postForUpdate);
+        postFileService.updateBoardFile(files, postForUpdate);
         return ApiResult.success(null, HttpStatus.OK);
     }
 
