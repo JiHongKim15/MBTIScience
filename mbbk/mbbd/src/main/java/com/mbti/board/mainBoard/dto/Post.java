@@ -4,8 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -15,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
+//TODO: validation 에러 메시지 문구 재설정
 
 @Getter
 @Setter
@@ -38,14 +37,9 @@ public class Post {
     private String mainText;
 
     @Column(nullable = false)
-    private long views;
-
-    @Column(nullable = false)
-    @CreationTimestamp
     private LocalDateTime insDate;
 
     @Column(nullable = false)
-    @UpdateTimestamp
     private LocalDateTime updDate;
 
     //@Transient
@@ -73,6 +67,8 @@ public class Post {
 
         @NotEmpty(message = "글 본문 내용을 입력해 주세요")
         private String mainText;
+
+        private List<PostFile> postFiles;
     }
 
     @Builder
@@ -84,6 +80,11 @@ public class Post {
         private final LocalDateTime insDate;
     }
 
+    public void setTimeBeforeInsert(){
+        this.insDate = LocalDateTime.now();
+        this.updDate = LocalDateTime.now();
+    }
+
     // 함수명 이게 맞나..?
     public postForBoard of(){
         return postForBoard.builder().
@@ -92,5 +93,16 @@ public class Post {
             title(this.title).
             insDate(this.insDate).
             build();
+    }
+
+    public boolean updatePostInfo(PostForUpdate post){
+        if(this.author.equals(post.getAuthor()) && this.postNo == post.getPostNo()){
+            this.title = post.getTitle();
+            this.mainText = post.getMainText();
+            this.setPostFiles(post.getPostFiles());
+            this.updDate = LocalDateTime.now();
+            return true;
+        }
+        return false;
     }
 }
