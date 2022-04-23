@@ -27,25 +27,9 @@ public class PostService {
     private final CommentRepository commentRepository;
     private final PostFileRepository postFileRepository;
 
-    public Post makeObject(String str) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Post post = new Post();
-        // JSON -> Java Object
-        try {
-            System.out.println("####");
-            System.out.println(str);
-            post = objectMapper.readValue(str, Post.class);
-            return post;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return post;
-    }
-
     @Transactional(rollbackFor = BusinessException.class)
     public void createPost(Post post){
         try {
-            post.setTimeBeforeInsert();
             postRepository.save(post);
         } catch(BusinessException e){
             throw new BusinessException("글 저장 중 오류가 발생했습니다.", e);
@@ -58,14 +42,15 @@ public class PostService {
             List<Post> postList = postRepository.findAll(PageRequest.of(page - 1, limit, Sort.by("insDate").descending())).toList();
             return postList.stream().map(Post::of).collect(Collectors.toList());
         } catch(BusinessException e){
-            throw new BusinessException("글 저장 중 오류가 발생했습니다.", e);
+            throw new BusinessException("글 리스트 조회 중 오류가 발생했습니다.", e);
         }
     }
 
-    @Transactional(readOnly = true)
-    public Post readPostDetail(long pageNo){
-        Post post = postRepository.findById(pageNo)
+    @Transactional(rollbackFor = BusinessException.class)
+    public Post readPostDetail(long postNo){
+        Post post = postRepository.findById(postNo)
             .orElseThrow(() -> new BusinessException("글 정보가 존재하지 않습니다."));
+        postRepository.increaseViews(postNo);
         post.setComments(commentRepository.findAllByPost(post));
         post.setPostFiles(postFileRepository.findAllByPost(post));
         return post;
@@ -76,7 +61,7 @@ public class PostService {
         Post post = postRepository.findById(postForUpdate.getPostNo())
                 .orElseThrow(() -> new BusinessException("기존 글 정보가 존재하지 않습니다."));
 
-        if(post.updatePostInfo(postForUpdate)){
+        if(post.getAuthor().equals(postForUpdate.getAuthor())){
             try {
                 postRepository.save(post);
             } catch(BusinessException e){
