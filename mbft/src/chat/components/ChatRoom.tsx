@@ -1,5 +1,5 @@
 import ChatMessage from './ChatMessage';
-import { Container, Row, Col, ToastContainer, Toast, ToastBody } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
 interface Ilocation {
@@ -43,6 +43,36 @@ function ChatRoom() {
             >
                 <ChatMessage isFriend={true}></ChatMessage>
                 <ChatMessage isFriend={false}></ChatMessage>
+            </Container>
+            <Container style={{
+                padding: '0'
+            }}>
+                <form>
+                    <div style={{
+                        display: 'inline',
+                        fontSize: '25px',
+                        fontFamily: 'IBMPlexSansKR-Medium',
+                    }}>
+
+                        <input type="text" style={{
+                            width: '90%',
+                            borderRadius: '10px',
+                            border: '4px solid #282828'
+                        }}
+                            placeholder="메시지를 입력하세요." required></input>
+
+
+                        <Button variant="primary" type="submit" style={{
+                            width: '10%',
+                            backgroundColor: '#B90000',
+                            border: '1px solid #B90000'
+                        }}
+                            size='lg'>
+                            입력
+                        </Button>
+                    </div>
+
+                </form>
             </Container>
         </Container >
     );
