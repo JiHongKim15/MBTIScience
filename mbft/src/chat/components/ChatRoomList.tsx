@@ -14,6 +14,7 @@ function ChatRoomList() {
         setRooms(response.data);
     };
 
+    // 해당 메소드는 처음 렌더링 됐을때 실행
     useEffect(() => {
         searchRooms();
     }, []);
