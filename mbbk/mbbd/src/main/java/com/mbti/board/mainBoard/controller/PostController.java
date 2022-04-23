@@ -6,7 +6,6 @@ import com.mbti.board.mainBoard.service.PostFileService;
 import com.mbti.board.mainBoard.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,16 +25,14 @@ public class PostController {
     private final PostService postService;
     private final PostFileService postFileService;
 
-    @PostMapping(
-            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+    @PostMapping
     public ApiResult<String> create(
             @RequestPart(value="files", required=false) List<MultipartFile> files,
             @Valid @RequestPart Post post
     ){
         postService.createPost(post);
-        postFileService.insertBoardFile(files, post);
+        if(files != null && !files.isEmpty())
+            postFileService.insertBoardFile(files, post);
         return ApiResult.success(null, HttpStatus.OK);
     }
 
