@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:8082",
+  "proxy": "http://localhost:8080",
   "name": "mbft",
   "version": "0.1.0",
   "private": true,
@@ -59,6 +59,7 @@
     "semver": "^7.3.5",
     "source-map-loader": "^3.0.0",
     "style-loader": "^3.3.1",
+    "styled-components": "^5.3.5",
     "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
     "typescript": "^4.6.2",

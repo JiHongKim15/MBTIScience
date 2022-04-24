@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Table, Container } from "react-bootstrap";
+import { useHistory } from 'react-router';
 
 function ChatRoomList() {
 
+    const [rooms, setRooms] = useState<any>(null);
+
+    const searchRooms = async () => {
+        const url = "/chat/rooms";
+
+        const response = await axios.get(url);
+        setRooms(response.data);
+    };
+
+    // 해당 메소드는 처음 렌더링 됐을때 실행
+    useEffect(() => {
+        searchRooms();
+    }, []);
+
+    const history = useHistory();
     return (
         <div className="ChatRoomList">
             <Container>
@@ -19,32 +36,24 @@ function ChatRoomList() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td colSpan={2}>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
+                        {/* optional chaining */}
+                        {rooms?.map(room => (
+                            <tr key={room.chatRoomId}
+                                onClick={() => {
+                                    history.push({
+                                        pathname: `/chat/room/${room.chatRoomId}`,
+                                        state: { room: room }
+                                    })
+                                }}>
+                                <td>{room.chatRoomId}</td>
+                                <td>{room.chatSubject}</td>
+                                <td>{room.mbti}</td>
+                                <td>{room.hostId}</td>
+                                <td>{room.num}</td>
+                                <td>{room.maxNum}</td>
+                                <td>{room.creationTime}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </Table>
             </Container>
