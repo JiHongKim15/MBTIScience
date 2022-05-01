@@ -38,6 +38,7 @@
   }
 }
 
+/* font.css로 따로 관리 */
 @font-face {
   font-family: 'OTWelcomeRA';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');

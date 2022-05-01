@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import '../../App.css';
+import '../../Font.css';
 
 //https://projects.verou.me/bubbly/
 const MessageStyle = styled.div`
