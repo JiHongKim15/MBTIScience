@@ -16,7 +16,6 @@ public record LoginController(LoginService loginService) {
 
     @GetMapping
     public void login(){
-        System.out.println("TEST!!!!!!!!!");
     }
 
     @GetMapping("/google")

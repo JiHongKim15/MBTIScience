@@ -37,8 +37,4 @@ public record UserController(UserService userService) {
         userService.deleteUser(id);
     }
 
-
-
-
-
 }
