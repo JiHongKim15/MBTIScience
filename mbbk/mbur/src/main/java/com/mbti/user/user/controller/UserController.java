@@ -3,38 +3,21 @@ package com.mbti.user.user.controller;
 
 import com.mbti.user.user.entity.User;
 import com.mbti.user.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@Slf4j
 @Valid
 @RestController
 @RequestMapping("/user")
 public record UserController(UserService userService) {
 
-    @GetMapping
-    public User retrieveUserById(@RequestParam String id){
-        return userService.retrieveUserById(id);
-    }
-
-    /**
-     * Method: saveUser
-     * Description: 회원가입
-     * @param user
-     */
-    @PostMapping
-    public void saveUser(@RequestBody User user){
-        userService.saveUser(user);
-    }
-
-    @PatchMapping
-    public void updateUser(@RequestBody User user){
-        userService.updateUser(user);
-    }
-
-    @DeleteMapping
-    public void deleteUser(@RequestBody String id){
-        userService.deleteUser(id);
+    @GetMapping("/retrieve")
+    public User retrieveUserByEmail(@RequestParam String email){
+        log.info("이메일로 유저 정보 확인: " + email);
+        return userService.retrieveUserByEmail(email);
     }
 
 }
