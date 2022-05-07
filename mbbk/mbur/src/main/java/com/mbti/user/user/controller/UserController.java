@@ -16,7 +16,7 @@ public record UserController(UserService userService) {
 
     @GetMapping("/retrieve")
     public User retrieveUserByEmail(@RequestParam String email){
-        log.info("이메일로 유저 정보 확인: " + email);
+        log.debug("이메일로 유저 정보 확인: " + email);
         return userService.retrieveUserByEmail(email);
     }
 
