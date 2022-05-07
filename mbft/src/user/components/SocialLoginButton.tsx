@@ -5,6 +5,7 @@ import { createButton } from "react-social-login-buttons";
 
 
 type buttonConfig = {
+    social: String;
     url: String;
 }
 
@@ -25,12 +26,10 @@ const kakaoConfig = {
   };
 const KakaoLoginButton = createButton(kakaoConfig);
 
-
-
 class SocialLoginButton extends Component<buttonConfig> {
 
     socialLogin = () => {
-        axios.get('http://localhost:8082/oauth2/authorization/google')// + {this.props.social})
+        axios.get('http://localhost:8082/oauth2/authorization/google')
         .then( () => {
             console.log("로그인 성공");
         })

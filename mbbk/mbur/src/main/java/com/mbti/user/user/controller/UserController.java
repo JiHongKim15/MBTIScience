@@ -20,4 +20,9 @@ public record UserController(UserService userService) {
         return userService.retrieveUserByEmail(email);
     }
 
+    @PatchMapping("/updatembti")
+    public User updateUserMbti(@RequestBody User user){
+        return userService.updateUserMbti(user);
+    }
+
 }

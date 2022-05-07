@@ -1,5 +1,4 @@
 import ChatMessage from './ChatMessage';
-<<<<<<< HEAD
 import { Container, Form, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
@@ -76,15 +75,6 @@ function ChatRoom() {
                 </form>
             </Container>
         </Container >
-=======
-
-function ChatRoom() {
-
-    return (
-        <div className="ChatRoom">
-            <ChatMessage></ChatMessage>
-        </div >
->>>>>>> 8219131 (feature: 채팅방과 말풍선 component 생성)
     );
 }
 
