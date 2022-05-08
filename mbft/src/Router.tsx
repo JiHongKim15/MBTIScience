@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router";
 import { BrowserRouter } from 'react-router-dom';
 
 import ChatMainPage from './chat/pages/ChatMainPage';
-import LoginPage from './user/pages/Login/LoginPage';
+import LoginPage from './user/pages/LoginPage';
 import Home from './common/Home';
 import ChatRoomListPage from './chat/pages/ChatRoomListPage';
 import ChatRoomPage from './chat/pages/ChatRoomPage';
