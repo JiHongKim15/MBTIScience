@@ -2,7 +2,6 @@ package com.mbti.board.mainBoard.controller;
 
 import com.mbti.board.mainBoard.controller.bind.ApiResult;
 import com.mbti.board.mainBoard.dto.Post;
-import com.mbti.board.mainBoard.service.PostFileService;
 import com.mbti.board.mainBoard.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,16 +22,14 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
-    private final PostFileService postFileService;
 
     @PostMapping
     public ApiResult<String> create(
             @RequestPart(value="files", required=false) List<MultipartFile> files,
             @Valid @RequestPart Post post
     ){
-        postService.createPost(post);
-        if(files != null && !files.isEmpty())
-            postFileService.insertBoardFile(files, post);
+        postService.createPost(post, files);
+
         return ApiResult.success(null, HttpStatus.OK);
     }
 
@@ -60,8 +57,7 @@ public class PostController {
             @RequestPart(value="files", required=false) List<MultipartFile> files,
             @RequestPart @Valid Post.PostForUpdate postForUpdate
     ){
-        postService.updatePost(postForUpdate);
-        postFileService.updateBoardFile(files, postForUpdate);
+        postService.updatePost(postForUpdate, files);
         return ApiResult.success(null, HttpStatus.OK);
     }
 
