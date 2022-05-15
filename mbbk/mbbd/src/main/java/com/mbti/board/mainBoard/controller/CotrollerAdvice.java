@@ -2,6 +2,7 @@ package com.mbti.board.mainBoard.controller;
 
 import com.mbti.board.mainBoard.exception.BusinessException;
 import com.mbti.board.mainBoard.controller.bind.ApiResult;
+import com.mbti.board.mainBoard.exception.ExternalApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -38,6 +39,10 @@ public class CotrollerAdvice {
         return ApiResult.fail(e.getMessage().split(": ")[1], HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(ExternalApiException.class)
+    private ApiResult<?> handleExternalApiException(ConstraintViolationException e) {
+        return ApiResult.fail(e.getMessage().split(": ")[1], HttpStatus.BAD_REQUEST);
+    }
 
 
     // 정의하지 않은 에러 handler... 근데 에러 출력이 제대로 안됨. 이거 어떻게 처리하지? -> 임시처리

@@ -2,7 +2,6 @@ package com.mbti.board.mainBoard.controller;
 
 import com.mbti.board.mainBoard.controller.bind.ApiResult;
 import com.mbti.board.mainBoard.dto.Post;
-import com.mbti.board.mainBoard.service.PostFileService;
 import com.mbti.board.mainBoard.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,22 +22,21 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
-    private final PostFileService postFileService;
 
     @PostMapping
     public ApiResult<String> create(
             @RequestPart(value="files", required=false) List<MultipartFile> files,
-            @Valid @RequestPart(value = "post") Post post
+            @Valid @RequestPart Post post
     ){
-        postService.createPost(post);
-        postFileService.insertBoardFile(files, post);
+        postService.createPost(post, files);
+
         return ApiResult.success(null, HttpStatus.OK);
     }
 
     @GetMapping
     public ApiResult<List<Post.postForBoard>> readList(
-            @RequestParam @Min(value = 1, message = "첫 페이지보다 더 이전의 페이지를 조회했습니다.") int page,
-            @RequestParam @Min(value = 1, message = "한 페이지에 최소 한 개 이상의 정보가 표시되어야 합니다.") int limit
+            @RequestParam(defaultValue = "1") @Min(value = 1, message = "첫 페이지보다 더 이전의 페이지를 조회했습니다.") int page,
+            @RequestParam(defaultValue = "10") @Min(value = 1, message = "한 페이지에 최소 한 개 이상의 정보가 표시되어야 합니다.") int limit
     ){
         return ApiResult.success(postService.readPostList(page, limit), HttpStatus.OK);
     }
@@ -59,8 +57,7 @@ public class PostController {
             @RequestPart(value="files", required=false) List<MultipartFile> files,
             @RequestPart @Valid Post.PostForUpdate postForUpdate
     ){
-        postService.updatePost(postForUpdate);
-        postFileService.updateBoardFile(files, postForUpdate);
+        postService.updatePost(postForUpdate, files);
         return ApiResult.success(null, HttpStatus.OK);
     }
 
