@@ -20,5 +20,4 @@ class SocialLogin extends Component {
     }
 }
 
-
 export default SocialLogin;

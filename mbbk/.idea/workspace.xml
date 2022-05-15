@@ -5,27 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894b7838-79ae-41e2-b524-986943f71cc5" name="Default Changelist" comment="Default Changelist">
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/auth/LoginUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/auth/LoginUserArgumentResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/auth/ResourceServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/auth/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/security/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/config/swagger/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/exception/BusinessException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/dto/OAuthAttributes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/dto/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/dto/SessionUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/service/CustomOAuth2UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/service/LoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/java/com/mbti/user/user/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user 2/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/service/CustomOAuth2UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mbur/src/main/java/com/mbti/user/user/service/CustomOAuth2UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mbft/src/user/login/components/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/../mbft/src/user/login/components/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mbft/src/user/login/components/SocialLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../mbft/src/user/login/components/SocialLogin.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +61,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/user 2/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Issue.Navigation" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -174,5 +158,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
