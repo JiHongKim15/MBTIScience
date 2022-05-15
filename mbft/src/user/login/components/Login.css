@@ -31,13 +31,13 @@
     margin-top: 7px;
 }
 
-.social-btn.facebook img {
-    height: 24px;
+.social-btn.naver img {
+    height: 32px;
     margin-left: 3px;
 }
 
-.social-btn.github img {
-    height: 24px;
+.social-btn.kakao img {
+    height: 32px;
     margin-left: 3px;
 }
 
