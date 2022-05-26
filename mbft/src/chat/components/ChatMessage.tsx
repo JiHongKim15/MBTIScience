@@ -45,10 +45,10 @@ function ChatMessage(props) {
             <DivStyle>
                 {
                     props.isFriend &&
-                    <div style={{ fontFamily: 'IBMPlexSansKR-Medium' }}>지혜</div>
+                    <div style={{ fontFamily: 'IBMPlexSansKR-Medium' }}>{props.speaker}</div>
                 }
                 <MessageStyle isFriend={props.isFriend}>
-                    안녕안녕
+                    {props.message}
                 </MessageStyle>
             </DivStyle>
         </div >

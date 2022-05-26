@@ -41,8 +41,12 @@ function ChatRoom() {
                 }}
 
             >
-                <ChatMessage isFriend={true}></ChatMessage>
-                <ChatMessage isFriend={false}></ChatMessage>
+                <ChatMessage isFriend={true}
+                    message="안녕안녕"
+                    speaker="지혜" />
+                <ChatMessage isFriend={false}
+                    message="안녕안녕2"
+                />
             </Container>
             <Container style={{
                 padding: '0'
