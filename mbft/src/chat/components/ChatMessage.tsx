@@ -10,6 +10,7 @@ const MessageStyle = styled.div`
         border-radius: .4em;
         padding : 10px;
         max-width : 300px;
+        min-width : 100px;
         text-align: left;
         ${props => (props.isFriend ? 'float: left;' : 'float: right;')}
         font-size: 20px;
