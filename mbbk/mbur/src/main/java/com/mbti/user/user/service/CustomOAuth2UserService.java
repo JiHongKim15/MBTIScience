@@ -41,7 +41,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-
         UserDto user = userService.retrieveUserByEmail(attributes.getEmail());
 
         /*
@@ -52,6 +51,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
          */
 
         //이미 존재하는 회원인 경우 로그인 -> 로그인 실패 && 새로운 회원인 경우 회원가입 유무를 물어봐야 함
+        //회원가입을 할 것이라는 정보를 어떻게 알 수 있는가?
+        //일단 oauth2로 정보를 저장하고, 회원가입 시 덮어쓰기?
         if(user == null){
             //화면에서 회원가입을 진행할 것인지 물어본다.
             return null;
