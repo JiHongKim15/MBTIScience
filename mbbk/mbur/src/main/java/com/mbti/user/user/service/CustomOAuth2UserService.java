@@ -3,6 +3,7 @@ package com.mbti.user.user.service;
 import com.mbti.user.exception.BusinessException;
 import com.mbti.user.user.dto.OAuthAttributes;
 import com.mbti.user.user.dto.SessionUser;
+import com.mbti.user.user.dto.UserDto;
 import com.mbti.user.user.entity.UserEntity;
 import com.mbti.user.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,14 +41,23 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
+
+        UserDto user = userService.retrieveUserByEmail(attributes.getEmail());
+
+        /*
+        TODO: null check를 어떤 형식으로 하는 것이 좋을까?
+        1. optional: 비용이 비싸다는 문제 발생
+        2. null utils 생성: 가장 많이 사용하는 방식
+        3. equals, == null 사용
+         */
+
         //이미 존재하는 회원인 경우 로그인 -> 로그인 실패 && 새로운 회원인 경우 회원가입 유무를 물어봐야 함
-        if(!login(attributes)){
-            //attributes -> 회원가입 하겠다 -> API
-            //1. 우선적으로 DB에 저장 후, 회원가입을 하지 않겠다면 DB에서 삭제
-            //2. 자체 토큰
-            //3. 토근 검증이 가능한 지
+        if(user == null){
+            //화면에서 회원가입을 진행할 것인지 물어본다.
+            return null;
         }
-        UserEntity userEntity = saveOrUpdate(attributes);
+
+        UserEntity userEntity = this.saveOrUpdate(attributes); //저장 및 업데이트 진행
         httpSession.setAttribute("user", new SessionUser(userEntity));
 
         return new DefaultOAuth2User(
@@ -64,15 +74,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         return userRepository.save(userEntity);
     }
 
-    private boolean login(OAuthAttributes attributes){
-        Optional<UserEntity> user = Optional.ofNullable(userRepository.findByEmail(attributes.getEmail())
-                .orElseThrow(() -> new BusinessException("사용자 정보를 가져오는 도중 오류가 발생하였습니다.")));
-
-        if(!user.isPresent()){
-            return false;
-        }
-
-        return true;
-    }
+    /*
+    TODO: 구글 = 카카오 = 네이버로 로그인을 모두 같게 연동한다면, email이 key 값이 될 수 있을까?
+     */
 
 }
