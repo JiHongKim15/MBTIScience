@@ -1,10 +1,8 @@
 package com.mbti.user.user.service;
 
 import com.mbti.user.exception.BusinessException;
-import com.mbti.user.user.dto.UserDto;
-import com.mbti.user.user.entity.UserMapper;
+import com.mbti.user.user.entity.UserEntity;
 import com.mbti.user.user.repository.UserRepository;
-import com.mbti.user.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,19 +23,19 @@ public class UserService{
      * @return
      */
     @Transactional(readOnly = true)
-    public User retrieveUserByEmail(String email){
-        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email)
+    public UserEntity retrieveUserByEmail(String email){
+        Optional<UserEntity> user = Optional.ofNullable(userRepository.findByEmail(email)
                 .orElseThrow(() -> new BusinessException("사용자 정보를 가져오는 도중 오류가 발생하였습니다.")));
         return user.get();
     }
 
     /**
      * User Mbti 정보를 업데이트 한다.
-     * @param  user
+     * @param  userEntity
      * @return
      */
-    public User updateUserMbti(User user) {
-        userRepository.save(user);
-        return user;
+    public UserEntity updateUserMbti(UserEntity userEntity) {
+        userRepository.save(userEntity);
+        return userEntity;
     }
 }

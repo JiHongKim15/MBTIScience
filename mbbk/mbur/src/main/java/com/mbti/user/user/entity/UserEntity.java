@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @Table(name = "user")
-public class User {
+public class UserEntity {
 
     @Id
     private String email;
@@ -43,7 +43,7 @@ public class User {
     private Date firstAccessDate;
 
     @Builder
-    public User(String name, String email, String picture, Role role) {
+    public UserEntity(String name, String email, String picture, Role role) {
         this.name = name;
         this.email = email;
         this.picture = picture;
@@ -51,7 +51,7 @@ public class User {
     }
 
     @Builder
-    public User(String id, String pw, String name, String email, String picture, Role role) {
+    public UserEntity(String id, String pw, String name, String email, String picture, Role role) {
         this.id = id;
         this.pw = pw;
         this.name = name;
@@ -60,7 +60,7 @@ public class User {
         this.role = role;
     }
 
-    public User update(String name, String picture) {
+    public UserEntity update(String name, String picture) {
         this.name = name;
         this.picture = picture;
 

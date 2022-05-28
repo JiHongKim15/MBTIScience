@@ -1,7 +1,7 @@
 package com.mbti.user.user.controller;
 
 
-import com.mbti.user.user.entity.User;
+import com.mbti.user.user.entity.UserEntity;
 import com.mbti.user.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +15,14 @@ import javax.validation.Valid;
 public record UserController(UserService userService) {
 
     @GetMapping("/retrieve")
-    public User retrieveUserByEmail(@RequestParam String email){
+    public UserEntity retrieveUserByEmail(@RequestParam String email){
         log.debug("이메일로 유저 정보 확인: " + email);
         return userService.retrieveUserByEmail(email);
     }
 
     @PatchMapping("/updatembti")
-    public User updateUserMbti(@RequestBody User user){
-        return userService.updateUserMbti(user);
+    public UserEntity updateUserMbti(@RequestBody UserEntity userEntity){
+        return userService.updateUserMbti(userEntity);
     }
 
 }

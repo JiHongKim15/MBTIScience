@@ -1,6 +1,6 @@
 package com.mbti.user.client;
 
-import com.mbti.user.user.entity.User;
+import com.mbti.user.user.entity.UserEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(name = "user", url = "https://user.custommdomain.co.kr")
 public interface UserClient {
     @GetMapping(value = "/api/user")
-    User getUser();
+    UserEntity getUser();
 }
