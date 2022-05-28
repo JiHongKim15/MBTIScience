@@ -3,8 +3,8 @@ package com.mbti.user.user.service;
 import com.mbti.user.exception.BusinessException;
 import com.mbti.user.user.dto.OAuthAttributes;
 import com.mbti.user.user.dto.SessionUser;
+import com.mbti.user.user.entity.UserEntity;
 import com.mbti.user.user.repository.UserRepository;
-import com.mbti.user.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -47,25 +47,25 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
             //2. 자체 토큰
             //3. 토근 검증이 가능한 지
         }
-        User user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));
+        UserEntity userEntity = saveOrUpdate(attributes);
+        httpSession.setAttribute("user", new SessionUser(userEntity));
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
+                Collections.singleton(new SimpleGrantedAuthority(userEntity.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
     }
 
-    private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = userRepository.findByEmail(attributes.getEmail())
+    private UserEntity saveOrUpdate(OAuthAttributes attributes) {
+        UserEntity userEntity = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
 
-        return userRepository.save(user);
+        return userRepository.save(userEntity);
     }
 
     private boolean login(OAuthAttributes attributes){
-        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(attributes.getEmail())
+        Optional<UserEntity> user = Optional.ofNullable(userRepository.findByEmail(attributes.getEmail())
                 .orElseThrow(() -> new BusinessException("사용자 정보를 가져오는 도중 오류가 발생하였습니다.")));
 
         if(!user.isPresent()){

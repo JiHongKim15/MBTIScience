@@ -2,52 +2,52 @@ package com.mbti.user.user.entity;
 
 import com.mbti.user.user.dto.UserDto;
 import com.mbti.user.user.dto.UserDto.UserDtoBuilder;
-import com.mbti.user.user.entity.User.UserBuilder;
+import com.mbti.user.user.entity.UserEntity.UserEntityBuilder;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-15T10:33:22+0900",
+    date = "2022-05-29T00:38:20+0900",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 public class UserMapperImpl implements UserMapper {
 
     @Override
-    public UserDto toUserDto(User user) {
-        if ( user == null ) {
+    public UserDto toUserDto(UserEntity userEntity) {
+        if ( userEntity == null ) {
             return null;
         }
 
         UserDtoBuilder userDto = UserDto.builder();
 
-        userDto.email( user.getEmail() );
-        userDto.id( user.getId() );
-        userDto.pw( user.getPw() );
-        userDto.name( user.getName() );
-        userDto.picture( user.getPicture() );
-        userDto.mbti( user.getMbti() );
-        userDto.role( user.getRole() );
-        userDto.lastAccessDate( user.getLastAccessDate() );
-        userDto.firstAccessDate( user.getFirstAccessDate() );
+        userDto.email( userEntity.getEmail() );
+        userDto.id( userEntity.getId() );
+        userDto.pw( userEntity.getPw() );
+        userDto.name( userEntity.getName() );
+        userDto.picture( userEntity.getPicture() );
+        userDto.mbti( userEntity.getMbti() );
+        userDto.role( userEntity.getRole() );
+        userDto.lastAccessDate( userEntity.getLastAccessDate() );
+        userDto.firstAccessDate( userEntity.getFirstAccessDate() );
 
         return userDto.build();
     }
 
     @Override
-    public User toUserEntity(UserDto UserDto) {
+    public UserEntity toUserEntity(UserDto UserDto) {
         if ( UserDto == null ) {
             return null;
         }
 
-        UserBuilder user = User.builder();
+        UserEntityBuilder userEntity = UserEntity.builder();
 
-        user.name( UserDto.getName() );
-        user.email( UserDto.getEmail() );
-        user.picture( UserDto.getPicture() );
-        user.role( UserDto.getRole() );
-        user.id( UserDto.getId() );
-        user.pw( UserDto.getPw() );
+        userEntity.name( UserDto.getName() );
+        userEntity.email( UserDto.getEmail() );
+        userEntity.picture( UserDto.getPicture() );
+        userEntity.role( UserDto.getRole() );
+        userEntity.id( UserDto.getId() );
+        userEntity.pw( UserDto.getPw() );
 
-        return user.build();
+        return userEntity.build();
     }
 }
