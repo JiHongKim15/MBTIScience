@@ -1,6 +1,5 @@
 package com.mbti.user.user.service;
 
-import com.mbti.user.exception.BusinessException;
 import com.mbti.user.user.dto.OAuthAttributes;
 import com.mbti.user.user.dto.SessionUser;
 import com.mbti.user.user.dto.UserDto;
@@ -19,15 +18,17 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
-import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
-    private final UserRepository userRepository;
+
     private final HttpSession httpSession;
     private final UserService userService;
+
+    private final UserRepository userRepository;
+
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -68,7 +69,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     private UserEntity saveOrUpdate(OAuthAttributes attributes) {
-        UserEntity userEntity = userRepository.findByEmail(attributes.getEmail())
+
+        String uuid = userService.retrieveUserEmailUUIDByEmail(attributes.getEmail());
+
+        UserEntity userEntity = userRepository.findByUuid(uuid)
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
 
