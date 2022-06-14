@@ -2,8 +2,10 @@ package com.mbti.user.user.service;
 
 import com.mbti.user.exception.BusinessException;
 import com.mbti.user.user.dto.UserDto;
+import com.mbti.user.user.entity.UserEmailMapper;
 import com.mbti.user.user.entity.UserEntity;
 import com.mbti.user.user.entity.UserMapper;
+import com.mbti.user.user.repository.UserEmailRepository;
 import com.mbti.user.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,10 @@ public class UserService{
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
+    private final UserEmailRepository userEmailRepository;
+    private final UserEmailMapper userEmailMapper;
+
+
     /**
      * Email 정보로 User 정보를 리턴한다.
      * @param email
@@ -30,7 +36,7 @@ public class UserService{
 
         //Optional은 JPA 권장사항이므로 JPA에서 가져올 때 사용하고 이후 사용하지 않는다.
         //WHY? 비용이 비싸기 때문
-        UserDto user = userMapper.toUserDto(Optional.ofNullable(userRepository.findByEmail(email)
+        UserDto user = userMapper.toUserDto(Optional.ofNullable(userRepository.findByUuid(email)
                 .orElseThrow(() -> new BusinessException("사용자 정보를 가져오는 도중 오류가 발생하였습니다.")))
                 .get());
 
@@ -45,5 +51,10 @@ public class UserService{
     public UserEntity updateUserMbti(UserEntity userEntity) {
         UserEntity user = userRepository.save(userEntity);
         return user;
+    }
+
+    public String retrieveUserEmailUUIDByEmail(String email){
+        return userEmailMapper.toUserEmailDto(userEmailRepository.findByEmail(email).get()).getUuid();
+
     }
 }
