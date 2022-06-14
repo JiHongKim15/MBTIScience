@@ -15,13 +15,7 @@ import java.util.Date;
 public class UserEntity {
 
     @Id
-    private String email;
-
-    @Column
-    private String id;
-
-    @Column
-    private String pw;
+    private String uuid;
 
     @Column
     private String name;
@@ -43,19 +37,8 @@ public class UserEntity {
     private Date firstAccessDate;
 
     @Builder
-    public UserEntity(String name, String email, String picture, Role role) {
+    public UserEntity(String name, String picture, Role role) {
         this.name = name;
-        this.email = email;
-        this.picture = picture;
-        this.role = role;
-    }
-
-    @Builder
-    public UserEntity(String id, String pw, String name, String email, String picture, Role role) {
-        this.id = id;
-        this.pw = pw;
-        this.name = name;
-        this.email = email;
         this.picture = picture;
         this.role = role;
     }
@@ -63,7 +46,6 @@ public class UserEntity {
     public UserEntity update(String name, String picture) {
         this.name = name;
         this.picture = picture;
-
         return this;
     }
 
