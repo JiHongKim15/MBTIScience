@@ -20,7 +20,5 @@ public class LoginService {
     }
 
     public void logout(SessionUser sessionUser) {
-        log.info("logout 테스트");
-        log.info(sessionUser.getEmail());
     }
 }
