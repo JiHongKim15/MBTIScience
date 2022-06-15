@@ -1,6 +1,7 @@
 package com.mbti.user.user.entity;
 
 import com.mbti.user.user.dto.Role;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.Date;
 
 @Getter
 @Entity
-@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user")
 public class UserEntity {
 
@@ -47,10 +48,6 @@ public class UserEntity {
         this.name = name;
         this.picture = picture;
         return this;
-    }
-
-    public String getRoleKey() {
-        return this.role.getKey();
     }
 
 }

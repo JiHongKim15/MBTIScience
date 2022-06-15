@@ -4,6 +4,7 @@ import com.mbti.user.user.dto.OAuthAttributes;
 import com.mbti.user.user.dto.SessionUser;
 import com.mbti.user.user.dto.UserDto;
 import com.mbti.user.user.entity.UserEntity;
+import com.mbti.user.user.entity.UserMapper;
 import com.mbti.user.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     private final UserService userService;
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
 
     @Override
@@ -44,13 +46,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         UserDto user = userService.retrieveUserByEmail(attributes.getEmail());
 
-        /*
-        TODO: null check를 어떤 형식으로 하는 것이 좋을까?
-        1. optional: 비용이 비싸다는 문제 발생
-        2. null utils 생성: 가장 많이 사용하는 방식
-        3. equals, == null 사용
-         */
-
         //이미 존재하는 회원인 경우 로그인 -> 로그인 실패 && 새로운 회원인 경우 회원가입 유무를 물어봐야 함
         //회원가입을 할 것이라는 정보를 어떻게 알 수 있는가?
         //일단 oauth2로 정보를 저장하고, 회원가입 시 덮어쓰기?
@@ -59,16 +54,16 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
             return null;
         }
 
-        UserEntity userEntity = this.saveOrUpdate(attributes); //저장 및 업데이트 진행
-        httpSession.setAttribute("user", new SessionUser(userEntity));
+        UserDto userDto = this.saveOrUpdate(attributes); //저장 및 업데이트 진행
+        httpSession.setAttribute("user", new SessionUser(userDto));
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(userEntity.getRoleKey())),
+                Collections.singleton(new SimpleGrantedAuthority(userDto.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
     }
 
-    private UserEntity saveOrUpdate(OAuthAttributes attributes) {
+    private UserDto saveOrUpdate(OAuthAttributes attributes) {
 
         String uuid = userService.retrieveUserEmailUUIDByEmail(attributes.getEmail());
 
@@ -76,11 +71,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
 
-        return userRepository.save(userEntity);
+        return userMapper.toUserDto(userRepository.save(userEntity));
     }
-
-    /*
-    TODO: 구글 = 카카오 = 네이버로 로그인을 모두 같게 연동한다면, email이 key 값이 될 수 있을까?
-     */
 
 }

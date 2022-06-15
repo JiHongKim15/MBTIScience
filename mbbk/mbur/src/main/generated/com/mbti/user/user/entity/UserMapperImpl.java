@@ -4,12 +4,14 @@ import com.mbti.user.user.dto.UserDto;
 import com.mbti.user.user.dto.UserDto.UserDtoBuilder;
 import com.mbti.user.user.entity.UserEntity.UserEntityBuilder;
 import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-06T17:37:29+0900",
+    date = "2022-06-15T19:29:26+0900",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
+@Component
 public class UserMapperImpl implements UserMapper {
 
     @Override
@@ -20,9 +22,7 @@ public class UserMapperImpl implements UserMapper {
 
         UserDtoBuilder userDto = UserDto.builder();
 
-        userDto.email( userEntity.getEmail() );
-        userDto.id( userEntity.getId() );
-        userDto.pw( userEntity.getPw() );
+        userDto.uuid( userEntity.getUuid() );
         userDto.name( userEntity.getName() );
         userDto.picture( userEntity.getPicture() );
         userDto.mbti( userEntity.getMbti() );
@@ -42,11 +42,8 @@ public class UserMapperImpl implements UserMapper {
         UserEntityBuilder userEntity = UserEntity.builder();
 
         userEntity.name( UserDto.getName() );
-        userEntity.email( UserDto.getEmail() );
         userEntity.picture( UserDto.getPicture() );
         userEntity.role( UserDto.getRole() );
-        userEntity.id( UserDto.getId() );
-        userEntity.pw( UserDto.getPw() );
 
         return userEntity.build();
     }
