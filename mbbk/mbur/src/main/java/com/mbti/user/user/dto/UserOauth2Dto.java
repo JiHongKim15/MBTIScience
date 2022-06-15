@@ -13,7 +13,6 @@ public class UserOauth2Dto {
     private String email;
     private String name;
     private String picture;
-    private String mbti;
     private Role role;
 
     public String getRoleKey() {

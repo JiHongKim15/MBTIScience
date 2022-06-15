@@ -15,24 +15,24 @@ import org.springframework.stereotype.Component;
 public class UserMapperImpl implements UserMapper {
 
     @Override
-    public UserDto toUserDto(UserEntity userEmailEntity) {
-        if ( userEmailEntity == null ) {
+    public UserDto toUserDto(UserEntity userEntity) {
+        if ( userEntity == null ) {
             return null;
         }
 
         UserDtoBuilder userDto = UserDto.builder();
 
-        userDto.uuid( userEmailEntity.getUuid() );
-        userDto.email( userEmailEntity.getEmail() );
-        userDto.lastAccessDate( userEmailEntity.getLastAccessDate() );
-        userDto.firstAccessDate( userEmailEntity.getFirstAccessDate() );
+        userDto.uuid( userEntity.getUuid() );
+        userDto.email( userEntity.getEmail() );
+        userDto.lastAccessDate( userEntity.getLastAccessDate() );
+        userDto.firstAccessDate( userEntity.getFirstAccessDate() );
 
         return userDto.build();
     }
 
     @Override
-    public UserEntity toUserEntity(UserDto userEmailDto) {
-        if ( userEmailDto == null ) {
+    public UserEntity toUserEntity(UserDto userDto) {
+        if ( userDto == null ) {
             return null;
         }
 
@@ -41,10 +41,10 @@ public class UserMapperImpl implements UserMapper {
         Date lastAccessDate = null;
         Date firstAccessDate = null;
 
-        email = userEmailDto.getEmail();
-        uuid = userEmailDto.getUuid();
-        lastAccessDate = userEmailDto.getLastAccessDate();
-        firstAccessDate = userEmailDto.getFirstAccessDate();
+        email = userDto.getEmail();
+        uuid = userDto.getUuid();
+        lastAccessDate = userDto.getLastAccessDate();
+        firstAccessDate = userDto.getFirstAccessDate();
 
         String mbti = null;
 

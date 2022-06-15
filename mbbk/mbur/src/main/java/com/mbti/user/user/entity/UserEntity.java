@@ -9,13 +9,10 @@ import java.util.Date;
 @Getter
 @Entity
 @AllArgsConstructor
-@Table(name = "userEmail")
+@Table(name = "user")
 public class UserEntity {
 
     @Id
-    private String email;
-
-    @Column
     private String uuid;
 
     @Column

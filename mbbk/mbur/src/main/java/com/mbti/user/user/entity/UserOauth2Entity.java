@@ -15,6 +15,9 @@ import java.util.Date;
 public class UserOauth2Entity {
 
     @Id
+    private String email;
+
+    @Column
     private String uuid;
 
     @Column
