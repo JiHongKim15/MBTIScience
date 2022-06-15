@@ -1,8 +1,8 @@
 package com.mbti.user.user.controller;
 
 
-import com.mbti.user.user.dto.UserDto;
-import com.mbti.user.user.entity.UserEntity;
+import com.mbti.user.user.dto.UserOauth2Dto;
+import com.mbti.user.user.entity.UserOauth2Entity;
 import com.mbti.user.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +16,14 @@ import javax.validation.Valid;
 public record UserController(UserService userService) {
 
     @GetMapping("/retrieve")
-    public UserDto retrieveUserByEmail(@RequestParam String email){
+    public UserOauth2Dto retrieveUserByEmail(@RequestParam String email){
         log.debug("이메일로 유저 정보 확인: " + email);
-        return userService.retrieveUserByEmail(email);
+     //   return userService.retr(email);
+        return null;
     }
 
     @PatchMapping("/updatembti")
-    public UserEntity updateUserMbti(@RequestBody UserEntity userEntity){
+    public UserOauth2Entity updateUserMbti(@RequestBody UserOauth2Entity userEntity){
         return userService.updateUserMbti(userEntity);
     }
 
