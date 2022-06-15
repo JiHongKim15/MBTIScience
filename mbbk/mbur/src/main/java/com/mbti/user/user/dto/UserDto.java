@@ -10,7 +10,7 @@ import java.util.Date;
 public class UserDto {
 
     private String uuid;
-    private String email;
+    private String mbti;
     private Date lastAccessDate;
     private Date firstAccessDate;
 
