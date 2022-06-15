@@ -13,14 +13,16 @@ import java.util.Date;
 @Builder
 public class UserDto {
 
-    private String email;
-    private String id;
-    private String pw;
+    private String uuid;
     private String name;
     private String picture;
     private String mbti;
     private Role role;
     private Date lastAccessDate;
     private Date firstAccessDate;
+
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
 
 }

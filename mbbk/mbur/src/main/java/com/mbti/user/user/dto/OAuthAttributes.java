@@ -75,7 +75,6 @@ public class OAuthAttributes {
     public UserEntity toEntity(){
         return UserEntity.builder()
                 .name(name)
-                .email(email)
                 .picture(picture)
                 .role(Role.GUEST) // 기본 권한 GUEST
                 .build();
