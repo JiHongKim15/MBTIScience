@@ -48,7 +48,7 @@ public class UserService{
 
     /**
      * User Mbti 정보를 업데이트 한다.
-     * @param  userEntity
+     * @param  userOauth2Entity
      * @return
      */
     public UserOauth2Entity updateUserMbti(UserOauth2Entity userOauth2Entity) {

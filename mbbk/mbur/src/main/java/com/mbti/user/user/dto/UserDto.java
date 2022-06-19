@@ -11,6 +11,8 @@ public class UserDto {
 
     private String uuid;
     private String mbti;
+    private String name;
+    private String picture;
     private Date lastAccessDate;
     private Date firstAccessDate;
 
