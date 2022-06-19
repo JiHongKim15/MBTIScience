@@ -8,47 +8,45 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-15T21:56:49+0900",
+    date = "2022-06-16T09:14:37+0900",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 @Component
 public class UserMapperImpl implements UserMapper {
 
     @Override
-    public UserDto toUserDto(UserEntity userEntity) {
-        if ( userEntity == null ) {
+    public UserDto toUserDto(UserEntity userEmailEntity) {
+        if ( userEmailEntity == null ) {
             return null;
         }
 
         UserDtoBuilder userDto = UserDto.builder();
 
-        userDto.uuid( userEntity.getUuid() );
-        userDto.email( userEntity.getEmail() );
-        userDto.lastAccessDate( userEntity.getLastAccessDate() );
-        userDto.firstAccessDate( userEntity.getFirstAccessDate() );
+        userDto.uuid( userEmailEntity.getUuid() );
+        userDto.mbti( userEmailEntity.getMbti() );
+        userDto.lastAccessDate( userEmailEntity.getLastAccessDate() );
+        userDto.firstAccessDate( userEmailEntity.getFirstAccessDate() );
 
         return userDto.build();
     }
 
     @Override
-    public UserEntity toUserEntity(UserDto userDto) {
-        if ( userDto == null ) {
+    public UserEntity toUserEntity(UserDto userEmailDto) {
+        if ( userEmailDto == null ) {
             return null;
         }
 
-        String email = null;
         String uuid = null;
+        String mbti = null;
         Date lastAccessDate = null;
         Date firstAccessDate = null;
 
-        email = userDto.getEmail();
-        uuid = userDto.getUuid();
-        lastAccessDate = userDto.getLastAccessDate();
-        firstAccessDate = userDto.getFirstAccessDate();
+        uuid = userEmailDto.getUuid();
+        mbti = userEmailDto.getMbti();
+        lastAccessDate = userEmailDto.getLastAccessDate();
+        firstAccessDate = userEmailDto.getFirstAccessDate();
 
-        String mbti = null;
-
-        UserEntity userEntity = new UserEntity( email, uuid, mbti, lastAccessDate, firstAccessDate );
+        UserEntity userEntity = new UserEntity( uuid, mbti, lastAccessDate, firstAccessDate );
 
         return userEntity;
     }

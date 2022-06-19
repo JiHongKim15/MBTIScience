@@ -55,6 +55,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         if(userList.isEmpty()){
             //uuid와 매핑되는 userEmail이 없음
             //하나의 email은 반드시 하나의 uuid를 가진 user 정보가 있어야한다. -> 에러 발생
+
             return null;
         }
 

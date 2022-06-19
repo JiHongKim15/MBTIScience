@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-15T22:03:21+0900",
+    date = "2022-06-16T09:14:38+0900",
     comments = "version: 1.4.1.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 @Component
@@ -25,6 +25,7 @@ public class UserOauth2MapperImpl implements UserOauth2Mapper {
         UserOauth2DtoBuilder userOauth2Dto = UserOauth2Dto.builder();
 
         userOauth2Dto.uuid( userEntity.getUuid() );
+        userOauth2Dto.email( userEntity.getEmail() );
         userOauth2Dto.name( userEntity.getName() );
         userOauth2Dto.picture( userEntity.getPicture() );
         userOauth2Dto.role( userEntity.getRole() );

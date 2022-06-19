@@ -18,6 +18,12 @@ public class UserEntity {
     @Column
     private String mbti;
 
+    @Column
+    private String name;
+
+    @Column
+    private String picture;
+
     @Column(nullable = false)
     private Date lastAccessDate;
 
