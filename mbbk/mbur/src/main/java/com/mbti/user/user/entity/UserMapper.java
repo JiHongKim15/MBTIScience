@@ -2,11 +2,10 @@ package com.mbti.user.user.entity;
 
 
 import com.mbti.user.user.dto.UserDto;
-import com.mbti.user.user.entity.User;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
-    UserDto toUserDto(User user);
-    User toUserEntity(UserDto UserDto);
+    UserDto toUserDto(UserEntity userEmailEntity);
+    UserEntity toUserEntity(UserDto userEmailDto);
 }

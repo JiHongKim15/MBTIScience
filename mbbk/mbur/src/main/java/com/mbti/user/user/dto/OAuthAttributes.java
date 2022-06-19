@@ -1,6 +1,6 @@
 package com.mbti.user.user.dto;
 
-import com.mbti.user.user.entity.User;
+import com.mbti.user.user.entity.UserOauth2Entity;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -72,10 +72,9 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public User toEntity(){
-        return User.builder()
+    public UserOauth2Entity toEntity(){
+        return UserOauth2Entity.builder()
                 .name(name)
-                .email(email)
                 .picture(picture)
                 .role(Role.GUEST) // 기본 권한 GUEST
                 .build();

@@ -2,8 +2,8 @@ package com.mbti.user.user.service;
 
 import com.mbti.user.user.dto.OAuthAttributes;
 import com.mbti.user.user.dto.SessionUser;
-import com.mbti.user.user.repository.UserRepository;
-import com.mbti.user.user.entity.User;
+import com.mbti.user.user.dto.UserOauth2Dto;
+import com.mysql.cj.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,13 +17,16 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
-    private final UserRepository userRepository;
+
     private final HttpSession httpSession;
+    private final UserService userService;
+
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -37,20 +40,35 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        User user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));
+        //이미 존재하는 회원인 경우 로그인 -> 로그인 실패 && 새로운 회원인 경우 회원가입 유무를 물어봐야 함
+        //회원가입을 할 것이라는 정보를 어떻게 알 수 있는가?
+        //일단 oauth2로 정보를 저장하고, 회원가입 시 덮어쓰기?
+        String uuid = userService.retrieveUserEmailUUIDByEmail(attributes.getEmail());
+        if(StringUtils.isNullOrEmpty(uuid)){
+            userService.saveUserOuath2(attributes, uuid);
+            //email과 매핑되는 uuid가 존재하지 않음
+            //회원가입 필요
+            return null;
+        }
+
+        List<UserOauth2Dto> userList = userService.retrieveUserByUuid(uuid);
+        if(userList.isEmpty()){
+            //uuid와 매핑되는 userEmail이 없음
+            //하나의 email은 반드시 하나의 uuid를 가진 user 정보가 있어야한다. -> 에러 발생
+
+            return null;
+        }
+
+        //항상 유저 정보 업데이트
+        UserOauth2Dto userDto = userService.updateUser(attributes); //저장 및 업데이트 진행
+        httpSession.setAttribute("user", new SessionUser(userDto));
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
+                Collections.singleton(new SimpleGrantedAuthority(userDto.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
     }
 
-    private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = userRepository.findByEmail(attributes.getEmail())
-                .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
-                .orElse(attributes.toEntity());
 
-        return userRepository.save(user);
-    }
+
 }

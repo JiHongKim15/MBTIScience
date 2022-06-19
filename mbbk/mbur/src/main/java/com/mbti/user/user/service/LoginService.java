@@ -14,19 +14,11 @@ public class LoginService {
 
     private final HttpSession httpSession;
 
-    public void loginGoogle(SessionUser sessionUser) {
+    public void login(SessionUser sessionUser) {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         return;
     }
 
-    public void loginNaver(SessionUser sessionUser) {
-    }
-
-    public void loginKakao(SessionUser sessionUser) {
-    }
-
     public void logout(SessionUser sessionUser) {
-        log.info("logout 테스트");
-        log.info(sessionUser.getEmail());
     }
 }

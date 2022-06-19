@@ -1,6 +1,5 @@
 package com.mbti.user.user.dto;
 
-import com.mbti.user.user.entity.User;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -14,9 +13,9 @@ public class SessionUser implements Serializable {
     private String email;
     private String picture;
 
-    public SessionUser(User user){
-        this.name = user.getName();
-        this.email = user.getEmail();
-        this.picture = user.getPicture();
+    public SessionUser(UserOauth2Dto userDto){
+        this.name = userDto.getName();
+//        this.email = userDto.getEmail();
+        this.picture = userDto.getPicture();
     }
 }

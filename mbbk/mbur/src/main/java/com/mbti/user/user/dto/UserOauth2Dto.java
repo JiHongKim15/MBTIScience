@@ -7,13 +7,16 @@ import java.util.Date;
 
 @Data
 @Builder
-public class UserDto {
+public class UserOauth2Dto {
 
     private String uuid;
-    private String mbti;
+    private String email;
     private String name;
     private String picture;
-    private Date lastAccessDate;
-    private Date firstAccessDate;
+    private Role role;
+
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
 
 }
