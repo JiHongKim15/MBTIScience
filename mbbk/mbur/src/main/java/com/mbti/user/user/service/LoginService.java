@@ -21,4 +21,9 @@ public class LoginService {
 
     public void logout(SessionUser sessionUser) {
     }
+
+    public void singUp(){
+
+    }
+
 }

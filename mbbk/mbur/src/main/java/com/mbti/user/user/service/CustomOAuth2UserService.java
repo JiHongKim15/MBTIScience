@@ -30,6 +30,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+
         log.debug("Oauth2 로그인");
         OAuth2UserService delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
@@ -44,18 +45,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         //회원가입을 할 것이라는 정보를 어떻게 알 수 있는가?
         //일단 oauth2로 정보를 저장하고, 회원가입 시 덮어쓰기?
         String uuid = userService.retrieveUserEmailUUIDByEmail(attributes.getEmail());
+
+        //회원가입 진행
         if(StringUtils.isNullOrEmpty(uuid)){
             userService.saveUserOuath2(attributes, uuid);
             //email과 매핑되는 uuid가 존재하지 않음
             //회원가입 필요
-            return null;
-        }
-
-        List<UserOauth2Dto> userList = userService.retrieveUserByUuid(uuid);
-        if(userList.isEmpty()){
-            //uuid와 매핑되는 userEmail이 없음
-            //하나의 email은 반드시 하나의 uuid를 가진 user 정보가 있어야한다. -> 에러 발생
-
             return null;
         }
 
